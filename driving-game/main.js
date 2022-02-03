@@ -1,6 +1,10 @@
 var $raceCar = document.querySelector('.race-car');
 var raceCarData = {
-  position: 'east'
+  position: 'east',
+  location: {
+    x: 0,
+    y: 0
+  }
 };
 
 document.addEventListener('keydown', turnCar);
@@ -26,23 +30,14 @@ function turnCar(event) {
 
 document.addEventListener('keydown', moveCar);
 
-// var raceCarStyle = $raceCar.style;
-// var plusSixteen = '16' + 'px';
-
 function moveCar(event) {
   if (event.code === 'Space') {
-    if (raceCarData.position === 'south') {
-      // console.log('south');
-    } else if (raceCarData.position === 'east') {
-      // raceCarLeft = raceCarLeft + plusSixteen;
-      $raceCar.style.left = $raceCar.style.left + '16' + 'px';
-      // console.log('$raceCar.style.left.value:', $raceCar.style.left);
-      // console.log('raceCarStyle.left:', raceCarStyle.left);
-      // console.log('east');
-    } else if (raceCarData.position === 'north') {
-      // console.log('north');
-    } else if (raceCarData.position === 'west') {
-      // console.log('west');
+    if (raceCarData.position === 'east') {
+      setInterval(function () {
+        raceCarData.location.x = raceCarData.location.x + 16;
+        $raceCar.style.left = raceCarData.location.x + 'px';
+      }, 16);
     }
   }
+
 }
