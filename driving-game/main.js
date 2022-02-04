@@ -4,7 +4,8 @@ var raceCarData = {
   location: {
     x: 0,
     y: 0
-  }
+  },
+  started: false
 };
 
 document.addEventListener('keydown', turnCar);
@@ -30,14 +31,16 @@ function turnCar(event) {
 
 document.addEventListener('keydown', moveCar);
 
-function moveCar(event) {
-  if (event.code === 'Space') {
-    if (raceCarData.position === 'east') {
-      setInterval(function () {
-        raceCarData.location.x = raceCarData.location.x + 16;
-        $raceCar.style.left = raceCarData.location.x + 'px';
-      }, 16);
-    }
-  }
+var moveCarInterval;
 
+function moveCar(event) {
+  if (event.code === 'Space' && raceCarData.started === false) {
+    raceCarData.started = true;
+    moveCarInterval = setInterval(function () {
+      raceCarData.location.x = raceCarData.location.x + 16;
+      $raceCar.style.left = raceCarData.location.x + 'px';
+    }, 16);
+  } else if (raceCarData.started === true && event.code === 'Space') {
+    clearInterval(moveCarInterval);
+  }
 }
