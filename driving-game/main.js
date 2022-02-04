@@ -36,7 +36,7 @@ function moveCar(event) {
       raceCarData.location.x = raceCarData.location.x + 16;
       $raceCar.style.left = raceCarData.location.x + 'px';
     }, 16);
-  } else if (event.code === 'Space' && raceCarData.started === true) {
+  } else if (raceCarData.started === true && event.code === 'Space') {
     clearInterval(moveCarInterval);
   }
 }
