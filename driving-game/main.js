@@ -12,14 +12,18 @@ document.addEventListener('keydown', turnCar);
 
 function turnCar(event) {
   if (event.code === 'ArrowDown') {
+    raceCarData.position = 'south';
     $raceCar.classList.add('down');
     $raceCar.classList.remove('up', 'left');
   } else if (event.code === 'ArrowUp') {
+    raceCarData.position = 'north';
     $raceCar.classList.add('up');
     $raceCar.classList.remove('down', 'left');
   } else if (event.code === 'ArrowRight') {
+    raceCarData.position = 'east';
     $raceCar.classList.remove('up', 'down', 'left');
   } else if (event.code === 'ArrowLeft') {
+    raceCarData.position = 'west';
     $raceCar.classList.add('left');
     $raceCar.classList.remove('up', 'down');
   }
